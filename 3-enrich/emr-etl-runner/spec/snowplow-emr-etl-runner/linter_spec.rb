@@ -48,7 +48,7 @@ describe Linter do
     end
     it 'should give back a LinterError if the given config isnt json' do
       expect(Linter.lint('a')).to eq(
-        LinterError.new("Could not parse resolver config a: unexpected token at 'a'"))
+        LinterError.new("Could not parse resolver config a: 743: unexpected token at 'a'"))
     end
   end
 
@@ -68,8 +68,8 @@ describe Linter do
     end
     it 'should give back an Array made of the validation errors if the enrichments arent jsons' do
       expect(subject.lint_enrichments(['a', 'b'])).to eq([
-        LinterError.new("Could not validate enrichment a: unexpected token at 'a'"),
-        LinterError.new("Could not validate enrichment b: unexpected token at 'b'"),
+        LinterError.new("Could not validate enrichment a: 743: unexpected token at 'a'"),
+        LinterError.new("Could not validate enrichment b: 743: unexpected token at 'b'"),
       ])
     end
   end
